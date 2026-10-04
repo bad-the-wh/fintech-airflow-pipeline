@@ -39,3 +39,34 @@ fintech_crypto_market_etl/
 │   └── load.py                     # Database loading module
 ├── logs/                           # Airflow task execution logs
 └── README.md
+```
+
+## ⚙️ Configuration & Setup
+
+1. **Clone the repository:
+
+```Bash
+git clone [https://github.com/your-username/fintech-crypto-market-etl.git](https://github.com/your-username/fintech-crypto-market-etl.git)
+cd fintech-crypto-market-etl
+```
+
+2. **Configure Environment Variables:
+
+Ensure your Airflow instance has the necessary database connections configured (e.g., postgres_default).
+
+2. **Directory Path Resolution:
+
+The DAG automatically appends the include/ directory to sys.path to ensure seamless module imports inside the container:
+
+```Python
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../include')))
+```
+
+## 🚨 Production Error Handling & Monitoring
+
+- **Failure Alerts: Features a custom on_failure_callback hook (task_failure_alert_callback) designed to log error payloads and integrate with alerting webhooks (such as Slack or PagerDuty).
+
+- **XCom Serialization Safe: Timestamps are explicitly converted to ISO-format strings before returning from transformation tasks to prevent JSON serialization errors (TypeError: Object of type Timestamp is not JSON serializable).
+
+## 📊 BI Dashboard Preview
+![Crypto Market Dashboard](assets/dashboard_preview.png)
