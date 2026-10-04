@@ -67,3 +67,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../i
 - **Failure Alerts: Features a custom on_failure_callback hook (task_failure_alert_callback) designed to log error payloads and integrate with alerting webhooks (such as Slack or PagerDuty).
 
 - **XCom Serialization Safe: Timestamps are explicitly converted to ISO-format strings before returning from transformation tasks to prevent JSON serialization errors (TypeError: Object of type Timestamp is not JSON serializable).
+
+## 📊 BI Dashboard Preview
+![Crypto Market Dashboard](assets/dashboard_preview.png)
