@@ -68,5 +68,22 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../i
 
 - **XCom Serialization Safe: Timestamps are explicitly converted to ISO-format strings before returning from transformation tasks to prevent JSON serialization errors (TypeError: Object of type Timestamp is not JSON serializable).
 
+---
+
+## 📊 Power BI Dashboard Setup
+
+The project includes a pre-configured Power BI report to visualize real-time trends, market capitalization distributions, and volume-to-market-cap ratios.
+
+### Prerequisites
+* **Power BI Desktop** installed on your machine.
+* A running **PostgreSQL** instance populated by the Airflow ETL pipeline.
+
+### Connecting the Dashboard
+1. Open the Power BI report file located in the `dashboard/` directory.
+2. When prompted (or via **Transform Data** > **Data source settings**), update your database connection parameters:
+   * **Server:** `localhost:5432` (or your container host)
+   * **Database:** Your PostgreSQL warehouse name
+3. Click **Refresh** to sync the model with your local tables (`dim_crypto` and `fact_crypto_market`).
+
 ## 📊 BI Dashboard Preview
 ![Crypto Market Dashboard](assets/dashboard_preview.png)
